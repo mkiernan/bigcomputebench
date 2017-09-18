@@ -201,7 +201,7 @@
     },
     "variables": {
         "BigComputeBenchName": "bigcomputebench",
-        "namingInfix": "[toLower(substring(concat('bigcompute', uniqueString(resourceGroup().id)), 0, 9))]",
+        "namingInfix": "[toLower(substring(concat('bigcomp', uniqueString(resourceGroup().id)), 0, 9))]",
         "virtualNetworkName": "[concat(variables('namingInfix'),'vnet')]",
         "NSGName": "[concat(variables('namingInfix'),'nsg')]",
         "BigComputeBenchIPConfigName": "[concat(variables('BigComputeBenchName'), 'ipconfig')]",
@@ -209,6 +209,8 @@
         "subnetName": "[concat(variables('namingInfix'),'subnet')]",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
+        "subnetPrefix": "10.1.13.0/24",
+        "addressPrefix": "10.1.13.0/16",
         "publicIPAddressName": "[concat(variables('namingInfix'), 'pip')]",
         "scriptUrl": "https://raw.githubusercontent.com/mkiernan/bigcomputebench/",
         "StorageMap": {
@@ -550,22 +552,19 @@
             "location": "[resourceGroup().location]",
             "scale": null,
             "properties": {
-                "provisioningState": "Succeeded",
                 "addressSpace": {
                     "addressPrefixes": [
-                        "10.1.3.0/24"
+                        "[variables('addressPrefix')]"
                     ]
                 },
                 "subnets": [
                     {
-                        "name": "default",
+                        "name": "[variables('subnetName')]",
                         "properties": {
-                            "provisioningState": "Succeeded",
-                            "addressPrefix": "10.1.3.0/24"
+                            "addressPrefix": "[variables('subnetPrefix')]"
                         }
                     }
-                ],
-                "virtualNetworkPeerings": []
+                ]
             },
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]"
