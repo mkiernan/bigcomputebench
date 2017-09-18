@@ -210,7 +210,7 @@
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
         "subnetPrefix": "10.1.13.0/24",
-        "addressPrefix": "10.1.13.0/16",
+        "addressPrefix": "10.1.0.0/16",
         "publicIPAddressName": "[concat(variables('namingInfix'), 'pip')]",
         "scriptUrl": "https://raw.githubusercontent.com/mkiernan/bigcomputebench/",
         "StorageMap": {
