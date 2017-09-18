@@ -154,8 +154,9 @@
         },
         "image": {
             "type": "string",
-            "defaultValue": "OpenLogic:CentOS:7.2",
+            "defaultValue": "Canonical:UbuntuServer:17.04",
             "allowedValues": [
+                "Canonical:UbuntuServer:17.04",
                 "Canonical:UbuntuServer:16.04-LTS",
                 "Canonical:UbuntuServer:16.10",
                 "OpenLogic:CentOS:6.5",
@@ -245,6 +246,12 @@
             "publisher": "Canonical",
             "offer": "UbuntuServer",
             "sku": "16.10",
+            "version": "latest"
+        },
+        "imageReference_Canonical:UbuntuServer:17.04": {
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "17.04",
             "version": "latest"
         },
         "imageReference_OpenLogic:CentOS-HPC:6.5": {
