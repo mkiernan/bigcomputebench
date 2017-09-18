@@ -208,6 +208,7 @@
         "BigComputeBenchNicName": "[concat(variables('BigComputeBenchName'), 'nic')]",
         "subnetName": "[concat(variables('namingInfix'),'subnet')]",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
         "publicIPAddressName": "[concat(variables('namingInfix'), 'pip')]",
         "scriptUrl": "https://raw.githubusercontent.com/mkiernan/bigcomputebench/",
         "StorageMap": {
@@ -402,7 +403,7 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
                             },
                             "subnet": {
-                                "id": "[variables('existingSubnetResourceId')]"
+                                "id": "[variables('subnetRef')]"
                             }
                         }
                     }
