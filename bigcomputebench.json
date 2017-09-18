@@ -616,7 +616,7 @@
                         "autoUpgradeMinorVersion": true,
                         "settings": {
                             "fileUris": "[variables('vmScripts').scriptsToDownload]",
-                            "commandToExecute": "[concat('bash ', 'bigcomputebench.sh ',parameters('adminUsername'),' ',parameters('image')) ]",
+                            "commandToExecute": "[concat('bash ', 'installtools.sh ',parameters('adminUsername'),' ',parameters('image')) ]",
                             "timestamp": 4
                         }
                     },
