@@ -14,13 +14,6 @@
                 "description": "Admin password on all VMs."
             }
         },
-        "Machine Name": {
-            "type": "string",
-            "defaultValue": "bigcomputebench",
-            "metadata": {
-                "description": "Hostname to use for the bigcompute launcher."
-            }
-        },
         "vmSku": {
             "defaultValue": "Standard_DS4_v2",
             "allowedValues": [
@@ -168,7 +161,7 @@
                 "SUSE:SLES:12-SP1"
             ],
             "metadata": {
-                "description": "OS version to deploy on NFS Server"
+                "description": "Linux OS version to deploy on VM"
             }
         },
         "storageDiskSize": {
