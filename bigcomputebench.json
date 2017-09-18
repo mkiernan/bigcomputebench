@@ -204,8 +204,8 @@
         "namingInfix": "[toLower(substring(concat('bigcompute', uniqueString(resourceGroup().id)), 0, 9))]",
         "virtualNetworkName": "[concat(variables('namingInfix'),'vnet')]",
         "NSGName": "[concat(variables('namingInfix'),'nsg')]",
-        "BigComputeBenchIPConfigName": "[concat(parameters('BigComputeBenchName'), 'ipconfig')]",
-        "BigComputeBenchNicName": "[concat(parameters('BigComputeBenchName'), 'nic')]",
+        "BigComputeBenchIPConfigName": "[concat(variables('BigComputeBenchName'), 'ipconfig')]",
+        "BigComputeBenchNicName": "[concat(variables('BigComputeBenchName'), 'nic')]",
         "subnetName": "[concat(variables('namingInfix'),'subnet')]",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
         "publicIPAddressName": "[concat(variables('namingInfix'), 'pip')]",
@@ -572,7 +572,7 @@
         },
         {
             "type": "Microsoft.Compute/virtualMachines",
-            "name": "[parameters('BigComputeBenchName')]",
+            "name": "[variables('BigComputeBenchName')]",
             "apiVersion": "[variables('computeApiVersion')]",
             "location": "[resourceGroup().location]",
             "properties": {
@@ -580,7 +580,7 @@
                     "vmSize": "[parameters('vmSku')]"
                 },
                 "osProfile": {
-                    "computerName": "[parameters('BigComputeBenchName')]",
+                    "computerName": "[variables('BigComputeBenchName')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]"
                 },
@@ -621,7 +621,7 @@
                         }
                     },
                     "dependsOn": [
-                        "[concat('Microsoft.Compute/virtualMachines/', parameters('BigComputeBenchName'))]"
+                        "[concat('Microsoft.Compute/virtualMachines/', variables('BigComputeBenchName'))]"
                     ]
                 }
             ],
