@@ -212,7 +212,7 @@
         "subnetPrefix": "10.1.13.0/24",
         "addressPrefix": "10.1.0.0/16",
         "publicIPAddressName": "[concat(variables('namingInfix'), 'pip')]",
-        "scriptUrl": "https://raw.githubusercontent.com/mkiernan/bigcomputebench/",
+        "scriptUrl": "https://raw.githubusercontent.com/mkiernan/bigcomputebench/master/",
         "StorageMap": {
             "P10": {
                 "size": 128
