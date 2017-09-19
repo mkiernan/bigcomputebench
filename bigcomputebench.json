@@ -295,9 +295,9 @@
         "imageReference": "[variables(concat('imageReference_',parameters('image')))]",
         "vmScripts": {
             "scriptsToDownload": [
-                "[concat(variables('scriptUrl'), 'nfs-setup.sh')]"
+                "[concat(variables('scriptUrl'), 'installtools.sh')]"
             ],
-            "commandToExecute": "[concat('bash ', 'nfs-setup.sh ',parameters('adminUsername'),' ',parameters('image'))]"
+            "commandToExecute": "[concat('bash ', 'installtools.sh ',parameters('adminUsername'),' ',parameters('image'))]"
         },
         "storageDiskArray": [
             {
