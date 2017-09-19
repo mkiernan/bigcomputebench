@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 ###############################################################################
 # Azure Extension Script:
 # Install essential tools for Azure Big Compute / Azure Batch
@@ -67,7 +67,7 @@ apt-get install -y docker-ce
 
 # Install Batch Shipyard - Ensure you are NOT root for this section
 # https://github.com/Azure/batch-shipyard/blob/master/docs/01-batch-shipyard-installation.md
-sudo -u someuser bash << EOSY
+sudo -u $ADMIN bash << EOSY
 SYVERSION="2.9.4"
 wget https://github.com/Azure/batch-shipyard/archive/$SYVERSION.tar.gz
 tar -xf $SYVERSION.tar.gz
