@@ -1,6 +1,6 @@
 # Bigcomputebench
 
-Basecamp workstation for Azure Batch &amp; BigCompute 
+Basecamp workstation for Azure Batch &amp; BigCompute
 
 This template deploys a single VM pre-configured with all the common tools required to manage an Azure Batch deployment. 
 
@@ -10,7 +10,11 @@ NB: Only Ubuntu 17.04 has been tested with the extension.
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 <br>
-* Deployment takes around 5 minutes.
+Deployment takes around 5 minutes.
 
-
-
+## Tools Installed:
+* Azure CLI
+* Azure batch extensions
+* Azure batch shipyard client
+* Azcopy & dotnet
+* Docker 
