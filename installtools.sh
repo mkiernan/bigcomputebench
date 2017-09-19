@@ -15,7 +15,7 @@ ADMIN=$1
 
 # Install dev & sysadmin tools
 sudo apt-get update
-sudo apt-get install -y build-essential g++ git gcc make cmake htop autotools-dev libicu-dev libbz2-dev libboost-all-dev libssl-dev libffi-dev libpython-dev python-dev python-pip zip
+sudo apt-get install -y build-essential g++ git gcc make cmake htop autotools-dev libicu-dev libbz2-dev libboost-all-dev libssl-dev libffi-dev libpython-dev python-dev python-pip pip python3-pip zip
 pip install --upgrade pip
 apt-get install -y redis-tools
 
@@ -54,7 +54,7 @@ apt-get install -y dotnet-sdk-2.0.0
 #echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-zesty-prod zesty main" > /etc/apt/sources.list.d/microsoft-prod.list
 #sudo apt-get install azcopy
 wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
-tar -xf azcopy.tar.gz
+tar -xvf azcopy.tar.gz
 ./install.sh
 
 # Install Docker
@@ -67,12 +67,10 @@ apt-get install -y docker-ce
 
 # Install Batch Shipyard - Ensure you are NOT root for this section
 # https://github.com/Azure/batch-shipyard/blob/master/docs/01-batch-shipyard-installation.md
-sudo -u $ADMIN bash << EOSY
-SYVERSION="2.9.4"
-wget https://github.com/Azure/batch-shipyard/archive/$SYVERSION.tar.gz
-tar -xf $SYVERSION.tar.gz
-cd batch-shipyard-$SYVERSION
-./install.sh -3
-SHIPYARD=`pwd`
+su - $ADMIN -c 'SYVERSION="2.9.4";\
+wget https://github.com/Azure/batch-shipyard/archive/$SYVERSION.tar.gz;\
+tar -xvf $SYVERSION.tar.gz; \
+cd batch-shipyard-$SYVERSION;\
+./install.sh -3;\
 echo "export PATH=$PATH:$HOME/.local/bin:$SHIPYARD" >> ~/.bashrc
-EOSY
+'
