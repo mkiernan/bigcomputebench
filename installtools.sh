@@ -25,7 +25,7 @@ echo "##########################################################################
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 apt-get install -y apt-transport-https
-apt-get update && sudo apt-get install -y azure-cli
+apt-get update && apt-get install -y azure-cli
 # Configure azure cli
 # https://docs.microsoft.com/en-us/cli/azure/format-output-azure-cli?view=azure-cli-latest
 mkdir /home/$ADMIN/.azure
@@ -54,6 +54,7 @@ echo "#cli extensions###########################################################
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-zesty-prod zesty main" > /etc/apt/sources.list.d/dotnetdev.list
+sleep 30 # hack
 apt-get install -y dotnet-sdk-2.0.0
 echo "# dotnet ######################################################################"
 #echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-zesty-prod zesty main" > /etc/apt/sources.list.d/microsoft-prod.list
@@ -69,7 +70,7 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
 apt-get install -y apt-transport-https ca-certificates software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sleep 5
+sleep 30 # hack
 apt-get install -y docker-ce
 echo "# docker #####################################################################"
 
@@ -79,6 +80,7 @@ su - $ADMIN -c 'SYVERSION="2.9.4";\
 wget https://github.com/Azure/batch-shipyard/archive/$SYVERSION.tar.gz;\
 tar -xvf $SYVERSION.tar.gz; \
 cd batch-shipyard-$SYVERSION;\
+SHIPYARD=`pwd`;\
 ./install.sh -3;\
 echo "export PATH=$PATH:$HOME/.local/bin:$SHIPYARD" >> ~/.bashrc
 echo "# shipyard ###################################################################"
