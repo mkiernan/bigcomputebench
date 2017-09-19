@@ -13,10 +13,16 @@ fi
 
 ADMIN=$1
 
+export DEBIAN_FRONTEND=noninteractive
+echo "* hard memlock unlimited" >> /etc/security/limits.conf
+echo "* soft memlock unlimited" >> /etc/security/limits.conf
+apt-get -y update
+apt-get -y upgrade
+
 # Install dev & sysadmin tools
-sudo apt-get update
 sudo apt-get install -y build-essential g++ git gcc make cmake htop autotools-dev libicu-dev libbz2-dev libboost-all-dev libssl-dev libffi-dev libpython-dev python-dev python-pip pip python3-pip zip
-pip install --upgrade pip
+pip3 install --upgrade pip
+pip3 install wheel
 apt-get install -y redis-tools
 echo "##############################################################################"
 
@@ -24,8 +30,8 @@ echo "##########################################################################
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
-apt-get install -y apt-transport-https
-apt-get update && apt-get install -y azure-cli
+apt-get -y install -y apt-transport-https
+apt-get -y update && apt-get install -y azure-cli
 # Configure azure cli
 # https://docs.microsoft.com/en-us/cli/azure/format-output-azure-cli?view=azure-cli-latest
 mkdir /home/$ADMIN/.azure
@@ -41,6 +47,7 @@ collect_telemetry = yes
 [logging]
 enable_log_file = yes
 EOF
+chown $ADMIN /home/$ADMIN/.azure
 echo "# azurecli ###################################################################"
 #
 # Install azure batch cli extensions
