@@ -17,7 +17,7 @@ export DEBIAN_FRONTEND=noninteractive
 echo "* hard memlock unlimited" >> /etc/security/limits.conf
 echo "* soft memlock unlimited" >> /etc/security/limits.conf
 apt-get -y update
-apt-get -y upgrade
+#apt-get -y upgrade
 
 # Install dev & sysadmin tools
 sudo apt-get install -y build-essential g++ git gcc make cmake htop autotools-dev libicu-dev libbz2-dev libboost-all-dev libssl-dev libffi-dev libpython-dev python-dev python-pip pip python3-pip zip
@@ -61,7 +61,6 @@ echo "#cli extensions###########################################################
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-zesty-prod zesty main" > /etc/apt/sources.list.d/dotnetdev.list
-sleep 30 # hack
 apt-get install -y dotnet-sdk-2.0.0
 echo "# dotnet ######################################################################"
 #echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-zesty-prod zesty main" > /etc/apt/sources.list.d/microsoft-prod.list
@@ -77,12 +76,12 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
 apt-get install -y apt-transport-https ca-certificates software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sleep 30 # hack
 apt-get install -y docker-ce
 echo "# docker #####################################################################"
 
 # Install Batch Shipyard - Ensure you are NOT root for this section
 # https://github.com/Azure/batch-shipyard/blob/master/docs/01-batch-shipyard-installation.md
+# credit to Karl Podesta for this little hack:
 su - $ADMIN -c 'SYVERSION="2.9.4";\
 wget https://github.com/Azure/batch-shipyard/archive/$SYVERSION.tar.gz;\
 tar -xvf $SYVERSION.tar.gz; \
@@ -90,5 +89,5 @@ cd batch-shipyard-$SYVERSION;\
 SHIPYARD=`pwd`;\
 ./install.sh -3;\
 echo "export PATH=$PATH:$HOME/.local/bin:$SHIPYARD" >> ~/.bashrc
-echo "# shipyard ###################################################################"
 '
+echo "# shipyard ###################################################################"
