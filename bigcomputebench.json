@@ -201,7 +201,7 @@
     },
     "variables": {
         "BigComputeBenchName": "bigcomputebench",
-        "namingInfix": "[toLower(substring(concat('bigcomp', uniqueString(resourceGroup().id)), 0, 9))]",
+        "namingInfix": "[toLower(substring(concat('bigcomp', uniqueString(resourceGroup().id)), 0, 12))]",
         "virtualNetworkName": "[concat(variables('namingInfix'),'vnet')]",
         "NSGName": "[concat(variables('namingInfix'),'nsg')]",
         "BigComputeBenchIPConfigName": "[concat(variables('namingInfix'), 'ipconfig')]",
