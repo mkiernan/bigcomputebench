@@ -152,7 +152,7 @@
                 "Canonical:UbuntuServer:17.04",
                 "Canonical:UbuntuServer:16.04-LTS",
                 "Canonical:UbuntuServer:16.10",
-		"microsoft-ads:linux-data-science-vm-ubuntu:latest"
+		"microsoft-ads:linux-data-science-vm-ubuntu:latest",
                 "OpenLogic:CentOS:6.5",
                 "OpenLogic:CentOS:6.8",
                 "OpenLogic:CentOS:7.1",
