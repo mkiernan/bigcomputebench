@@ -149,10 +149,10 @@
             "type": "string",
             "defaultValue": "Canonical:UbuntuServer:16.04-LTS",
             "allowedValues": [
+                "microsoft-ads:linux-data-science-vm-ubuntu:1.1.2",
                 "Canonical:UbuntuServer:17.04",
                 "Canonical:UbuntuServer:16.04-LTS",
                 "Canonical:UbuntuServer:16.10",
-                "microsoft-ads:linux-data-science-vm-ubuntu:latest",
                 "OpenLogic:CentOS:6.5",
                 "OpenLogic:CentOS:6.8",
                 "OpenLogic:CentOS:7.1",
@@ -233,6 +233,12 @@
         },
         "storageDiskSize": "[variables('StorageMap')[parameters('storageDiskSize')].size]",
         "numStorageDisks": "[parameters('storageDiskCount')]",
+        "imageReference_microsoft-ads:linux-data-science-vm-ubuntu:1.1.2": {
+            "publisher": "microsoft-ads",
+            "offer": "linux-data-science-vm-ubuntu",
+            "sku": "1.1.2",
+            "version": "latest"
+        },
         "imageReference_Canonical:UbuntuServer:16.04-LTS": {
             "publisher": "Canonical",
             "offer": "UbuntuServer",
